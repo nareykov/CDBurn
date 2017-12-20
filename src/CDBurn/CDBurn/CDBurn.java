@@ -1,7 +1,5 @@
 package CDBurn.CDBurn;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -25,13 +23,13 @@ public class CDBurn {
     private void copyFiles() {
         changeProgress("Copy files to temp directory DiskBuffer");
         for (File file : listFiles) {
-            Execute("cp -R " + file.getAbsolutePath() + " /home/ptaxom/DiskBuffer");
+            Execute("cp -R " + file.getAbsolutePath() + " /home/DiskBuffer");
         }
     }
 
     private void createDirectory() {
         changeProgress("Create temp directory DiskBuffer");
-        Execute("mkdir /home/ptaxom/DiskBuffer");
+        Execute("mkdir /home/DiskBuffer");
     }
 
     private void umountDisk() {
@@ -41,7 +39,7 @@ public class CDBurn {
 
     private void createISO() {
         changeProgress("Create ISO Disk.iso");
-        Execute("mkisofs -v -J -o Disk.iso /home/ptaxom/DiskBuffer");
+        Execute("mkisofs -v -J -o Disk.iso /home/DiskBuffer");
     }
 
     private void formatDisk() {
@@ -60,7 +58,7 @@ public class CDBurn {
     }
 
     private void deleteFiles() {
-        Execute("rm -rf /home/ptaxom/DiskBuffer");
+        Execute("rm -rf /home/DiskBuffer");
     }
 
     private void changeProgress(String message) {
